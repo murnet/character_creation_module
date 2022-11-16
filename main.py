@@ -70,7 +70,6 @@ def choice_char_class(char_name: str) -> Character:
     Возвращает строку с выбранным
     классом персонажа.
     """
-    # Добавили словарь, в котором соотносится ввод пользователя и класс персонажа.
     game_classes = {'warrior': Warrior, 'mage': Mage, 'healer': Healer}
 
     approve_choice: str = None
@@ -114,8 +113,10 @@ def start_training(character: Character):
     cmd = None
     while cmd != 'skip':
         cmd = input('Введи команду: ')
-        if cmd != 'skip':
+        if cmd in commands:
             print(commands[cmd]())
+        else:
+            print(f'Команда "{cmd}" не найдена')
     return 'Тренировка окончена.'
 
 
